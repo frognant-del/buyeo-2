@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>전화 연결 중...</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 80px;
+      background-color: #f9fafb;
+      color: #333;
+    }
+    a.call-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 18px;
+      background: #007bff;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 24px;
+      transition: background 0.2s;
+    }
+    a.call-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>전화 연결 중입니다...</h2>
+  <p>자동으로 전화 앱이 열리지 않으면 아래 버튼을 눌러주세요.</p>
+
+  <script>
+    // ✅ 실제 전화번호 (노출 없이 QR 내부에서는 URL만 보임)
+    const phone = '01083246008';
+
+    // 1초 후 전화 앱 자동 호출 시도
+    setTimeout(() => {
+      window.location.href = 'tel:' + phone;
+    }, 1000);
+
+    // 2초 후 수동 연결 버튼 생성
+    setTimeout(() => {
+      const btn = document.createElement('a');
+      btn.href = 'tel:' + phone;
+      btn.textContent = '📞 전화 걸기';
+      btn.className = 'call-btn';
+      document.body.appendChild(btn);
+    }, 2000);
+  </script>
+</body>
+</html>
